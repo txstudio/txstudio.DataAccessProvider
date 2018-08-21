@@ -50,6 +50,7 @@ namespace DataAccessProvider
                 this._DbConnection.Open();
             }
             this._DbTransaction = this._DbConnection.BeginTransaction();
+            this._DbCommand.Transaction = this._DbTransaction;
         }
 
         /// <summary>使用指定的交易隔離設定開啟交易</summary>
@@ -58,6 +59,7 @@ namespace DataAccessProvider
         {
             this._DbConnection.Open();
             this._DbTransaction = this._DbConnection.BeginTransaction(IsolationLevel);
+            this._DbCommand.Transaction = this._DbTransaction;
         }
 
 
