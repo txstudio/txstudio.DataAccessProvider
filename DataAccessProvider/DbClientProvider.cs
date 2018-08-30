@@ -239,11 +239,9 @@ namespace DataAccessProvider
 
             IEnumerable<T> Results;
 
-            this.OpenConnection();
             this.SetEmptyDbParameter();
             this._DbReader = this._DbCommand.ExecuteReader();
             Results = this.DataReaderMapper<T>(this._DbReader);
-            this.CloseConnection();
 
             return Results;
 
