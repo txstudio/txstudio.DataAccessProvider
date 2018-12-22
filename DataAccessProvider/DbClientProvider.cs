@@ -148,15 +148,12 @@ namespace DataAccessProvider
         /// <returns>轉換後的集合物件</returns>
         private IEnumerable<T> DataReaderMapper<T>(IDataReader DataReader)
         {
-
-            List<T> Items;
             T Template;
 
             List<string> Columns;
             string ColumnName;
 
             Columns = new List<string>();
-            Items = new List<T>();
 
             while (DataReader.Read())
             {
@@ -191,10 +188,8 @@ namespace DataAccessProvider
                     }
                 }
 
-                Items.Add(Template);
+                yield return Template;
             }
-
-            return Items;
         }
 
         /// <summary>執行資料庫查詢並將查詢結果轉換成指定型態的物件</summary>
@@ -236,15 +231,10 @@ namespace DataAccessProvider
         /// <returns>指定型態物件集合</returns>
         public IEnumerable<T> ExecuteAsMapper<T>()
         {
-
-            IEnumerable<T> Results;
-
             this.SetEmptyDbParameter();
             this._DbReader = this._DbCommand.ExecuteReader();
-            Results = this.DataReaderMapper<T>(this._DbReader);
 
-            return Results;
-
+            return this.DataReaderMapper<T>(this._DbReader);
         }
 
 
