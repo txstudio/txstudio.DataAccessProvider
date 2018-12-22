@@ -1,15 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
+    <ProjectReference Include="..\DataAccessProvider\DataAccessProvider.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessProvider\DataAccessProvider.csproj" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.18.3" />
   </ItemGroup>
 
 </Project>
